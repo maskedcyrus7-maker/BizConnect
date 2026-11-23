@@ -125,7 +125,7 @@ footer{background:#10243a;color:white;text-align:center;padding:25px;margin-top:
 <textarea id="productDescription" rows="3" placeholder="Describe your product"></textarea>
 <button class="btn" type="submit">Publish product</button>
 </form>
-<p class="small">Prototype listings are stored on this device, not shared online yet.</p>
+
 </section>
 </main>
 
@@ -139,10 +139,24 @@ footer{background:#10243a;color:white;text-align:center;padding:25px;margin-top:
 <script>
 let products=JSON.parse(localStorage.getItem("bizProducts")||"[]");
 
-function saveProducts(){
-localStorage.setItem("bizProducts",JSON.stringify(products));
-}
+async function saveProducts(){
+  try {
+    const { collection, addDoc, serverTimestamp } =
+      await import("https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js");
 
+    for (const product of products) {
+      await addDoc(collection(db, "products"), {
+        ...product,
+        createdAt: serverTimestamp()
+      });
+    }
+
+    alert("Products saved successfully!");
+  } catch (error) {
+    console.error("Firebase error:", error);
+    alert("Could not save products: " + error.message);
+  }
+}
 function choose(category){
 document.getElementById("filter").value=category;
 renderProducts();
