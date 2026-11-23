@@ -227,6 +227,40 @@ alert("Registration saved on this device!");
 });
 
 renderProducts();
+!-- Firebase connection -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyCQK1jBQB-bfxHUzFEiJaoDfmP2JTx_i5s",
+  authDomain: "bizconnect-f3a5a.firebaseapp.com",
+  projectId: "bizconnect-f3a5a",
+  storageBucket: "bizconnect-f3a5a.firebasestorage.app",
+  messagingSenderId: "86134037822",
+  appId: "1:86134037822:web:015a74808ffcad7830e06f"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+document.getElementById("registerForm")
+.addEventListener("submit", async function() {
+  const trader = {
+    name: document.getElementById("traderName").value,
+    business: document.getElementById("businessName").value,
+    phone: document.getElementById("traderPhone").value,
+    email: document.getElementById("traderEmail").value,
+    createdAt: new Date()
+  };
+
+  try {
+    await db.collection("traders").add(trader);
+    console.log("Trader saved online!");
+  } catch(error) {
+    console.error("Firebase error:", error);
+  }
+});
 </script>
 </body>
 </html>
