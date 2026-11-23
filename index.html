@@ -1,338 +1,228 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biz Connect | Trader Marketplace</title>
-    <style>
-        :root {
-            --primary: #1e40af;
-            --primary-hover: #1d4ed8;
-            --bg: #f3f4f6;
-            --card-bg: #ffffff;
-            --text: #1f2937;
-            --muted: #6b7280;
-            --border: #e5e7eb;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: var(--primary);
-            color: white;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            font-size: 1.5rem;
-            letter-spacing: -0.5px;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            border: 1px solid var(--border);
-        }
-
-        h2 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        label {
-            display: block;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 0.6rem;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            font-size: 0.95rem;
-        }
-
-        button {
-            width: 100%;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.75rem;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        button:hover {
-            background-color: var(--primary-hover);
-        }
-
-        .search-bar {
-            margin-bottom: 1.5rem;
-        }
-
-        .listings-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 1rem;
-        }
-
-        .product-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1.25rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-        }
-
-        .badge {
-            display: inline-block;
-            background: #dbeafe;
-            color: var(--primary);
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            margin-bottom: 0.5rem;
-            width: fit-content;
-        }
-
-        .product-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-        }
-
-        .product-price {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #059669;
-            margin-bottom: 0.5rem;
-        }
-
-        .product-desc {
-            font-size: 0.9rem;
-            color: var(--muted);
-            margin-bottom: 1rem;
-        }
-
-        .trader-info {
-            border-top: 1px solid var(--border);
-            padding-top: 0.75rem;
-            font-size: 0.85rem;
-        }
-
-        .contact-btn {
-            display: block;
-            text-align: center;
-            background-color: #10b981;
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem;
-            border-radius: 5px;
-            font-weight: 600;
-            margin-top: 0.5rem;
-        }
-
-        .contact-btn:hover {
-            background-color: #059669;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BizConnect | Global Marketplace</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f6fb;color:#182536}
+header{background:#10243a;color:white;padding:18px 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.logo{font-size:27px;font-weight:bold}
+.logo span{color:#ffbd45}
+nav a{color:white;text-decoration:none;margin:0 8px}
+.hero{background:linear-gradient(120deg,#10243a,#1769e0);color:white;padding:65px 7%;text-align:center}
+.hero h1{font-size:38px}
+.hero p{font-size:18px;line-height:1.6}
+.btn{display:inline-block;background:#ffbd45;color:#10243a;padding:13px 20px;border:0;border-radius:7px;font-weight:bold;text-decoration:none;cursor:pointer}
+.container{max-width:1100px;margin:auto;padding:28px 16px}
+h2{color:#10243a}
+.categories{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px}
+.category{background:white;padding:20px 8px;text-align:center;border-radius:10px;box-shadow:0 2px 8px #0001;font-weight:bold;cursor:pointer}
+.panel{background:white;padding:22px;border-radius:12px;margin:20px 0;box-shadow:0 2px 10px #0001}
+input,select,textarea{width:100%;padding:13px;margin:8px 0 15px;border:1px solid #ccd4df;border-radius:7px;font-size:15px}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.product{background:white;border-radius:10px;padding:15px;box-shadow:0 2px 9px #0001}
+.product img{width:100%;height:160px;object-fit:cover;border-radius:8px}
+.price{font-weight:bold;color:#1769e0;font-size:20px}
+.whatsapp{display:block;text-align:center;background:#16834a;color:white;padding:12px;border-radius:7px;text-decoration:none;margin-top:12px}
+.small{font-size:13px;color:#667}
+footer{background:#10243a;color:white;text-align:center;padding:25px;margin-top:35px}
+</style>
 </head>
 <body>
 
-    <header>
-        <h1>Biz Connect</h1>
-        <span>Trader Advertising Portal</span>
-    </header>
+<header>
+<div class="logo">Biz<span>Connect</span></div>
+<nav>
+<a href="#home">Home</a>
+<a href="#market">Marketplace</a>
+<a href="#register">Join</a>
+<a href="#post">Sell</a>
+</nav>
+</header>
 
-    <div class="container">
-        <!-- Form for Traders to Advertise Goods -->
-        <section class="card">
-            <h2>Post an Advert</h2>
-            <form id="advertForm">
-                <div class="form-group">
-                    <label for="businessName">Trader / Business Name</label>
-                    <input type="text" id="businessName" placeholder="e.g., Kampala Fresh Produce" required>
-                </div>
+<section class="hero" id="home">
+<h1>Connect. Trade. Grow.</h1>
+<p>Your marketplace for discovering products, connecting with traders and growing businesses.</p>
+<a class="btn" href="#market">Explore Marketplace</a>
+<a class="btn" href="#register">Join BizConnect</a>
+</section>
 
-                <div class="form-group">
-                    <label for="productName">Product / Good Name</label>
-                    <input type="text" id="productName" placeholder="e.g., 50kg Bag of Maize Flour" required>
-                </div>
+<main class="container">
+<h2>Explore Categories</h2>
+<div class="categories">
+<div class="category" onclick="choose('Electronics')">📱<br>Electronics</div>
+<div class="category" onclick="choose('Fashion')">👗<br>Fashion</div>
+<div class="category" onclick="choose('Agriculture')">🌾<br>Agriculture</div>
+<div class="category" onclick="choose('Vehicles')">🚗<br>Vehicles</div>
+<div class="category" onclick="choose('Furniture')">🪑<br>Furniture</div>
+<div class="category" onclick="choose('Other')">📦<br>Other</div>
+</div>
 
-                <div class="form-group">
-                    <label for="category">Category</label>
-                    <select id="category">
-                        <option value="Agriculture & Food">Agriculture & Food</option>
-                        <option value="Electronics">Electronics</option>
-                        <option value="Clothing & Textiles">Clothing & Textiles</option>
-                        <option value="Hardware & Construction">Hardware & Construction</option>
-                        <option value="Wholesale & General">Wholesale & General</option>
-                    </select>
-                </div>
+<section id="market">
+<h2>Marketplace</h2>
+<div class="panel">
+<input id="search" placeholder="Search products or traders..." oninput="renderProducts()">
+<select id="filter" onchange="renderProducts()">
+<option value="">All categories</option>
+<option>Electronics</option>
+<option>Fashion</option>
+<option>Agriculture</option>
+<option>Vehicles</option>
+<option>Furniture</option>
+<option>Other</option>
+</select>
+</div>
+<div class="products" id="products"></div>
+<p id="empty" class="small"></p>
+</section>
 
-                <div class="form-group">
-                    <label for="price">Price (UGX)</label>
-                    <input type="text" id="price" placeholder="e.g., 120,000" required>
-                </div>
+<section class="panel" id="register">
+<h2>Become a BizConnect Trader</h2>
+<p>Register your business and connect with potential customers.</p>
+<form id="registerForm">
+<label>Full name</label>
+<input id="traderName" required placeholder="Your full name">
+<label>Business name</label>
+<input id="businessName" required placeholder="Your business name">
+<label>Phone / WhatsApp number</label>
+<input id="traderPhone" required placeholder="2567XXXXXXXX">
+<label>Email address</label>
+<input id="traderEmail" type="email" required placeholder="Your email">
+<button class="btn" type="submit">Register interest</button>
+</form>
+<p class="small">Prototype registration: information is saved only on this device.</p>
+</section>
 
-                <div class="form-group">
-                    <label for="phone">Contact Phone / WhatsApp</label>
-                    <input type="tel" id="phone" placeholder="e.g., +256 700 000000" required>
-                </div>
+<section class="panel" id="post">
+<h2>Post a Product</h2>
+<form id="productForm">
+<label>Product name</label>
+<input id="productName" required placeholder="Product name">
+<label>Price</label>
+<input id="productPrice" required placeholder="e.g. UGX 150,000">
+<label>Category</label>
+<select id="productCategory" required>
+<option value="">Choose category</option>
+<option>Electronics</option>
+<option>Fashion</option>
+<option>Agriculture</option>
+<option>Vehicles</option>
+<option>Furniture</option>
+<option>Other</option>
+</select>
+<label>Product image URL (optional)</label>
+<input id="productImage" placeholder="Paste an image URL">
+<label>WhatsApp number</label>
+<input id="productPhone" required placeholder="2567XXXXXXXX">
+<label>Product description</label>
+<textarea id="productDescription" rows="3" placeholder="Describe your product"></textarea>
+<button class="btn" type="submit">Publish product</button>
+</form>
+<p class="small">Prototype listings are stored on this device, not shared online yet.</p>
+</section>
+</main>
 
-                <div class="form-group">
-                    <label for="description">Product Details & Location</label>
-                    <textarea id="description" rows="3" placeholder="Describe quality, quantity, and pickup location..." required></textarea>
-                </div>
+<footer>
+<h2 style="color:white">BizConnect</h2>
+<p>Connecting traders. Creating opportunities.</p>
+<p>Starting in Uganda, connecting the world.</p>
+<p>© 2026 BizConnect. All rights reserved.</p>
+</footer>
 
-                <button type="submit">Publish Advert</button>
-            </form>
-        </section>
+<script>
+let products=JSON.parse(localStorage.getItem("bizProducts")||"[]");
 
-        <!-- Marketplace Display -->
-        <section>
-            <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="Search for goods, categories, or traders...">
-            </div>
-            <div class="listings-grid" id="listingsContainer">
-                <!-- Adverts will appear here -->
-            </div>
-        </section>
-    </div>
+function saveProducts(){
+localStorage.setItem("bizProducts",JSON.stringify(products));
+}
 
-    <script>
-        // Sample initial listings so the app isn't empty on first load
-        const defaultAdverts = [
-            {
-                business: "Mukono Agro Traders",
-                product: "Organic Robusta Coffee Beans (100kg)",
-                category: "Agriculture & Food",
-                price: "850,000",
-                phone: "+256700123456",
-                description: "Sun-dried, sorted grade A beans ready for bulk buyers. Located near Mukono central market."
-            },
-            {
-                business: "City Tech Supplies",
-                product: "Solar Power Banks (20,000mAh)",
-                category: "Electronics",
-                price: "65,000",
-                phone: "+256770987654",
-                description: "Wholesale and retail available. Dual USB output with built-in LED torch."
-            }
-        ];
+function choose(category){
+document.getElementById("filter").value=category;
+renderProducts();
+document.getElementById("market").scrollIntoView();
+}
 
-        // Load saved adverts from browser storage or use defaults
-        let adverts = JSON.parse(localStorage.getItem('bizConnectAdverts')) || defaultAdverts;
+function renderProducts(){
+let search=document.getElementById("search").value.toLowerCase();
+let category=document.getElementById("filter").value;
+let list=document.getElementById("products");
+list.innerHTML="";
+let shown=0;
 
-        const form = document.getElementById('advertForm');
-        const listingsContainer = document.getElementById('listingsContainer');
-        const searchInput = document.getElementById('searchInput');
+products.filter(p=>
+(!category||p.category===category)&&
+(p.name.toLowerCase().includes(search)||
+p.description.toLowerCase().includes(search))
+).forEach(p=>{
+shown++;
+let card=document.createElement("div");
+card.className="product";
 
-        function renderAdverts(filterText = '') {
-            listingsContainer.innerHTML = '';
-            
-            const filtered = adverts.filter(ad => 
-                ad.product.toLowerCase().includes(filterText.toLowerCase()) ||
-                ad.business.toLowerCase().includes(filterText.toLowerCase()) ||
-                ad.category.toLowerCase().includes(filterText.toLowerCase())
-            );
+let img=document.createElement("img");
+img.src=p.image||"https://placehold.co/400x250?text=BizConnect";
+img.alt=p.name;
 
-            if (filtered.length === 0) {
-                listingsContainer.innerHTML = '<p>No goods found matching your search.</p>';
-                return;
-            }
+let name=document.createElement("h3");
+name.textContent=p.name;
 
-            filtered.forEach(ad => {
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.innerHTML = `
-                    <div>
-                        <span class="badge">${ad.category}</span>
-                        <div class="product-title">${ad.product}</div>
-                        <div class="product-price">UGX ${ad.price}</div>
-                        <p class="product-desc">${ad.description}</p>
-                    </div>
-                    <div class="trader-info">
-                        <strong>Seller:</strong> ${ad.business}<br>
-                        <strong>Tel:</strong> ${ad.phone}
-                        <a href="tel:${ad.phone}" class="contact-btn">Call Trader</a>
-                    </div>
-                `;
-                listingsContainer.appendChild(card);
-            });
-        }
+let price=document.createElement("p");
+price.className="price";
+price.textContent=p.price;
 
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
+let cat=document.createElement("p");
+cat.textContent=p.category;
 
-            const newAdvert = {
-                business: document.getElementById('businessName').value,
-                product: document.getElementById('productName').value,
-                category: document.getElementById('category').value,
-                price: document.getElementById('price').value,
-                phone: document.getElementById('phone').value,
-                description: document.getElementById('description').value
-            };
+let desc=document.createElement("p");
+desc.textContent=p.description;
 
-            adverts.unshift(newAdvert); // Add to top of list
-            localStorage.setItem('bizConnectAdverts', JSON.stringify(adverts)); // Save locally
-            
-            renderAdverts();
-            form.reset();
-        });
+let contact=document.createElement("a");
+contact.className="whatsapp";
+contact.textContent="Contact Trader on WhatsApp";
+contact.href="https://wa.me/"+p.phone.replace(/\D/g,"");
+contact.target="_blank";
 
-        searchInput.addEventListener('input', (e) => {
-            renderAdverts(e.target.value);
-        });
+card.append(img,name,price,cat,desc,contact);
+list.appendChild(card);
+});
 
-        // Initial render
-        renderAdverts();
-    </script>
+document.getElementById("empty").textContent=
+shown?"":"No products yet. Be the first to post!";
+}
+
+document.getElementById("productForm").addEventListener("submit",function(e){
+e.preventDefault();
+products.unshift({
+name:document.getElementById("productName").value.trim(),
+price:document.getElementById("productPrice").value.trim(),
+category:document.getElementById("productCategory").value,
+image:document.getElementById("productImage").value.trim(),
+phone:document.getElementById("productPhone").value.trim(),
+description:document.getElementById("productDescription").value.trim()
+});
+saveProducts();
+this.reset();
+renderProducts();
+alert("Product added on this device!");
+});
+
+document.getElementById("registerForm").addEventListener("submit",function(e){
+e.preventDefault();
+let traders=JSON.parse(localStorage.getItem("bizTraders")||"[]");
+traders.push({
+name:document.getElementById("traderName").value,
+business:document.getElementById("businessName").value,
+phone:document.getElementById("traderPhone").value,
+email:document.getElementById("traderEmail").value
+});
+localStorage.setItem("bizTraders",JSON.stringify(traders));
+this.reset();
+alert("Registration saved on this device!");
+});
+
+renderProducts();
+</script>
 </body>
 </html>
