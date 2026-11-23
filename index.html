@@ -242,6 +242,9 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+import { getFirestore } from "firebase/firestore";
+
+const db = getFirestore(app);
 const db = firebase.firestore();
 
 document.getElementById("registerForm")
