@@ -225,22 +225,6 @@ this.reset();
 renderProducts();
 alert("Product added on this device!");
 });
-
-document.getElementById("registerForm")..addEventListener("submit", async function(event) {
-    event.preventDefault();
-event.preventDefault();
-let traders=JSON.parse(localStorage.getItem("bizTraders")||"[]");
-traders.push({
-name:document.getElementById("traderName").value,
-business:document.getElementById("businessName").value,
-phone:document.getElementById("traderPhone").value,
-email:document.getElementById("traderEmail").value
-});
-localStorage.setItem("bizTraders",JSON.stringify(traders));
-this.reset();
-alert("Registration saved on this device!");
-});
-
 renderProducts();
 !-- Firebase connection -->
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
@@ -260,7 +244,8 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 document.getElementById("registerForm")
-.addEventListener("submit", async function() {
+.addEventListener("submit", async function(event) {
+event.preventDefault();
   const trader = {
     name: document.getElementById("traderName").value,
     business: document.getElementById("businessName").value,
@@ -272,6 +257,8 @@ document.getElementById("registerForm")
   try {
     await db.collection("traders").add(trader);
     console.log("Trader saved online!");
+alert("Welcome to BizConnect! Registration successful.");
+this.reset();
   } catch(error) {
     console.error("Firebase error:", error);
   }
