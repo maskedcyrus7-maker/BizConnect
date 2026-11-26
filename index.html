@@ -228,7 +228,7 @@ alert("Product added on this device!");
 
 document.getElementById("registerForm")..addEventListener("submit", async function(event) {
     event.preventDefault();
-e.preventDefault();
+event.preventDefault();
 let traders=JSON.parse(localStorage.getItem("bizTraders")||"[]");
 traders.push({
 name:document.getElementById("traderName").value,
