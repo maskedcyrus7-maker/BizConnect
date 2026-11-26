@@ -47,29 +47,40 @@ footer{background:#10243a;color:white;text-align:center;padding:25px;margin-top:
 <script>
 async function displayProducts() {
   const productList = document.getElementById("productList");
-  const products = await loadProducts();
+  
+async function displayProducts() {
+  const productList = document.getElementById("productList");
 
-  productList.innerHTML = "";
+  try {
+    productList.innerHTML = "<p>Loading products...</p>";
 
-  if (products.length === 0) {
-    productList.innerHTML = "<p>No products available yet.</p>";
-    return;
+    const products = await loadProducts();
+
+    productList.innerHTML = "";
+
+    if (products.length === 0) {
+      productList.innerHTML = "<p>No products available yet.</p>";
+      return;
+    }
+
+    products.forEach(product => {
+      const item = document.createElement("div");
+
+      item.innerHTML = `
+        <h3>${product.name || "Product"}</h3>
+        <p>${product.description || ""}</p>
+        <p>Price: ${product.price || "Contact seller"}</p>
+      `;
+
+      productList.appendChild(item);
+    });
+
+  } catch (error) {
+    console.error(error);
+    productList.innerHTML = "<p>Could not load products. Check Firebase connection.</p>";
   }
-
-  products.forEach(product => {
-    const item = document.createElement("div");
-
-    item.innerHTML = `
-      <h3>${product.name || "Product"}</h3>
-      <p>${product.description || ""}</p>
-      <p>Price: ${product.price || "Contact seller"}</p>
-    `;
-
-    productList.appendChild(item);
-  });
 }
 
-displayProducts();
 </script>
 
 
