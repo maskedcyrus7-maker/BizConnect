@@ -139,24 +139,26 @@ footer{background:#10243a;color:white;text-align:center;padding:25px;margin-top:
 <script>
 let products=JSON.parse(localStorage.getItem("bizProducts")||"[]");
 
-async function saveProducts(){
+
+async function saveProducts(product){
   try {
-    const { collection, addDoc, serverTimestamp } =
-      await import("https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js");
+    await db.collection("products").add({
+      ...product,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
 
-    for (const product of products) {
-      await addDoc(collection(db, "products"), {
-        ...product,
-        createdAt: serverTimestamp()
-      });
-    }
+    alert("Product successfully uploaded to BizConnect!");
 
-    alert("Products saved successfully!");
+    return true;
+
   } catch (error) {
     console.error("Firebase error:", error);
-    alert("Could not save products: " + error.message);
+    alert("Could not upload product: " + error.message);
+
+    return false;
   }
 }
+
 function choose(category){
 document.getElementById("filter").value=category;
 renderProducts();
@@ -210,21 +212,31 @@ document.getElementById("empty").textContent=
 shown?"":"No products yet. Be the first to post!";
 }
 
-document.getElementById("productForm").addEventListener("submit",function(e){
-e.preventDefault();
-products.unshift({
-name:document.getElementById("productName").value.trim(),
-price:document.getElementById("productPrice").value.trim(),
-category:document.getElementById("productCategory").value,
-image:document.getElementById("productImage").value.trim(),
-phone:document.getElementById("productPhone").value.trim(),
-description:document.getElementById("productDescription").value.trim()
+
+document.getElementById("productForm").addEventListener("submit", async function(e){
+  e.preventDefault();
+
+  const product = {
+    name: document.getElementById("productName").value.trim(),
+    price: document.getElementById("productPrice").value.trim(),
+    category: document.getElementById("productCategory").value,
+    image: document.getElementById("productImage").value.trim(),
+    phone: document.getElementById("productPhone").value.trim(),
+    description: document.getElementById("productDescription").value.trim()
+  };
+
+  const saved = await saveProducts(product);
+
+  if (saved) {
+    products.unshift(product);
+    localStorage.setItem("bizProducts", JSON.stringify(products));
+    this.reset();
+    renderProducts();
+  }
 });
-saveProducts();
-this.reset();
+
 renderProducts();
-alert("Product added on this device!");
-});
+
 renderProducts();
 </script>
 !-- Firebase connection -->
