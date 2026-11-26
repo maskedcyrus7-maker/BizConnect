@@ -137,10 +137,10 @@ footer{background:#10243a;color:white;text-align:center;padding:25px;margin-top:
 </footer>
 
 <script>
-let products=JSON.parse(localStorage.getItem("bizProducts")||"[]");
 
+let products = JSON.parse(localStorage.getItem("bizProducts") || "[]");
 
-async function saveProducts(product){
+async function saveProducts(product) {
   try {
     await db.collection("products").add({
       ...product,
@@ -150,6 +150,14 @@ async function saveProducts(product){
     alert("Product successfully uploaded to BizConnect!");
 
     return true;
+
+  } catch (error) {
+    console.error("Upload failed:", error);
+    alert("Product upload failed. Please try again.");
+    return false;
+  }
+}
+
 
   } catch (error) {
     console.error("Firebase error:", error);
