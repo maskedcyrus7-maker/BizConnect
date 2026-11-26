@@ -37,6 +37,42 @@ footer{background:#10243a;color:white;text-align:center;padding:25px;margin-top:
 </head>
 <body>
 
+<section id="products">
+  <h2>BizConnect Marketplace</h2>
+  <div id="productList">
+    <p>Loading products...</p>
+  </div>
+</section>
+
+<script>
+async function displayProducts() {
+  const productList = document.getElementById("productList");
+  const products = await loadProducts();
+
+  productList.innerHTML = "";
+
+  if (products.length === 0) {
+    productList.innerHTML = "<p>No products available yet.</p>";
+    return;
+  }
+
+  products.forEach(product => {
+    const item = document.createElement("div");
+
+    item.innerHTML = `
+      <h3>${product.name || "Product"}</h3>
+      <p>${product.description || ""}</p>
+      <p>Price: ${product.price || "Contact seller"}</p>
+    `;
+
+    productList.appendChild(item);
+  });
+}
+
+displayProducts();
+</script>
+
+
 <header>
 <div class="logo">Biz<span>Connect</span></div>
 <nav>
