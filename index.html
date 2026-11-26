@@ -158,6 +158,31 @@ async function saveProducts(product) {
   }
 }
 
+async function loadProducts() {
+  try {
+    const snapshot = await db.collection("products")
+      .orderBy("createdAt", "desc")
+      .get();
+
+    let products = [];
+
+    snapshot.forEach((doc) => {
+      products.push({
+        id: doc.id,
+        ...doc.data()
+      });
+    });
+
+    console.log("BizConnect products:", products);
+
+    return products;
+
+  } catch (error) {
+    console.error("Could not load products:", error);
+    return [];
+  }
+}
+
 
   } catch (error) {
     console.error("Firebase error:", error);
