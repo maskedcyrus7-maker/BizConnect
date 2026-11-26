@@ -226,7 +226,8 @@ renderProducts();
 alert("Product added on this device!");
 });
 
-document.getElementById("registerForm").addEventListener("submit",function(e){
+document.getElementById("registerForm")..addEventListener("submit", async function(event) {
+    event.preventDefault();
 e.preventDefault();
 let traders=JSON.parse(localStorage.getItem("bizTraders")||"[]");
 traders.push({
